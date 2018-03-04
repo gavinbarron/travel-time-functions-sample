@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "add-travel-meeting",
+      "connection": "travlerbotvkzmzc_STORAGE"
+    }
+  ],
+  "disabled": false
+}

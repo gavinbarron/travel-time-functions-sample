@@ -1,0 +1,23 @@
+{
+  "bindings": [
+    {
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "bot-hook-registration",
+      "connection": "travlerbotvkzmzc_STORAGE"
+    },
+    {
+      "type": "http",
+      "name": "res",
+      "direction": "out"
+    },
+    {
+      "type": "bot",
+      "name": "$return",
+      "botId": "functionbot",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

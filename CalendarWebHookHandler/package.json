@@ -1,0 +1,12 @@
+{
+  "name": "calendar-webhook-handler",
+  "version": "1.0.0",
+  "description": "Handles incoming webhook requests",
+  "main": "index.js",
+  "author": "Gavin Barron",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "azure-storage": "^2.8.0"
+  }
+}
