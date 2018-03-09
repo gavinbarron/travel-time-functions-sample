@@ -1,0 +1,23 @@
+{
+    "root": true,
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "no-console": 1,
+        "no-extra-parens": "error",
+        "array-bracket-newline": ["error", "consistent"],
+        "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+        "no-trailing-spaces": "error",
+        "no-whitespace-before-property": 1,
+        "space-before-blocks": ["error", "always"],
+        "keyword-spacing": ["error", { "before": true, "after": true }],
+        "arrow-spacing": "error"
+    }
+}

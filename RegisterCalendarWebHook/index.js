@@ -9,7 +9,7 @@ module.exports = function (context, myQueueItem) {
     expires.setDate(expires.getDate() + 2);
     const postData = {
         "changeType": "created",
-        "notificationUrl": "https://travlerbot-function.azurewebsites.net/api/CalendarWebHookHandler?code=E9fm1Yqe8hE0wR1bfSbJ2T/6Bl5fnJR7JY2Q2E8v6l1A4TIIJZv2Nw==",
+        "notificationUrl": "https://myfunction-function.azurewebsites.net/api/CalendarWebHookHandler?code=some3Code==",
         "resource": "me/events",
         "expirationDateTime": expires.toISOString(),
         "clientState": cfg.CLIENT_STATE
@@ -28,23 +28,28 @@ module.exports = function (context, myQueueItem) {
         }
     };
     try {
-        let req = https.request(postOpts, function(res){
-            res.setEncoding('utf8');
-            res.on('data', function (data) {
-                const subscription = JSON.parse(data);
-                context.log(subscription);
-                if (!subscription.id) {
-                    context.done('subscription id not present');
-                    return;
+        let req = https.request(postOpts, function (res) {
+            let subscriptionData = '';
+
+            res.on('data', chunk => subscriptionData += chunk);
+            res.on('end', () => {
+                if (res.statusCode === 201) context.done(JSON.parse(subscriptionData));
+                else {
+                    const subscription = JSON.parse(subscriptionData);
+                    context.log(subscription);
+                    if (!subscription.id) {
+                        context.done('subscription id not present');
+                        return;
+                    }
+                    var message = {
+                        'action': 'WEBHOOK_REGISTERED',
+                        'status': 'complete',
+                        'subscriptionId': subscription.id,
+                        'address': myQueueItem.address
+                    };
+                    context.log(message);
+                    context.done(null, message);
                 }
-                var message = {
-                    'action': 'WEBHOOK_REGISTERED',
-                    'status': 'complete',
-                    'subscriptionId': subscription.id,
-                    'address': myQueueItem.address
-                };
-                context.log(message);
-                context.done(null, message);
             });
         });
         req.write(postBody);

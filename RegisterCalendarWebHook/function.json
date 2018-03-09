@@ -5,7 +5,7 @@
       "type": "queueTrigger",
       "direction": "in",
       "queueName": "bot-hook-registration",
-      "connection": "travlerbotvkzmzc_STORAGE"
+      "connection": "AzureWebJobsStorage"
     },
     {
       "type": "http",

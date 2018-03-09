@@ -48,7 +48,7 @@ UserRepository.prototype =  {
       if (err) {
         callback(err);
       } else {
-        callback(null);
+        callback(null, doc);
       }
     });
   },
@@ -65,14 +65,14 @@ UserRepository.prototype =  {
           if (err) {
             callback(err);
           } else {
-            callback(null);
+            callback(null, replaced);
           }
         });
       }
     });
   },
 
-  getItemByGraphUserId: function(itemId, callback){
+  getItemByGraphUserId: function(itemId, callback) {
     var self = this;
 
     var querySpec = {
