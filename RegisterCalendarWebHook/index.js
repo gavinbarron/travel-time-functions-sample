@@ -9,7 +9,7 @@ module.exports = function (context, myQueueItem) {
     expires.setDate(expires.getDate() + 2);
     const postData = {
         "changeType": "created",
-        "notificationUrl": "https://myfunction-function.azurewebsites.net/api/CalendarWebHookHandler?code=some3Code==",
+        "notificationUrl": "https://graph-functions-node.azurewebsites.net/api/CalendarWebHookHandler?code=9EJaI7/UQ/W1Yvu3Lw48hFM0ZKippfJejmPVSdbVxReAO8cYb5iaYg==",
         "resource": "me/events",
         "expirationDateTime": expires.toISOString(),
         "clientState": cfg.CLIENT_STATE
