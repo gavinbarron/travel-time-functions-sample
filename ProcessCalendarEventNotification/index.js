@@ -56,7 +56,7 @@ module.exports = function (context, notification) {
                     'end': `${data.end.dateTime}Z`
                 };
                 //TODO: find a better way of getting the default mail address for the user.
-                if (data.organizer.emailAddress.address.toLowerCase() === 'my.email@domain.com') {
+                if (data.organizer.emailAddress.address.toLowerCase() === 'gavin.barron@teamintergen.com') {
                     //don't react to meetings I've organized.
                     context.done(new Error('Meeting from self'));
                     return;
