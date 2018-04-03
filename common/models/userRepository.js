@@ -113,6 +113,26 @@ UserRepository.prototype =  {
     });
   },
 
+  getUsersWithRefreshTokens: function(callback) {
+    var self = this;
+
+    var querySpec = {
+      query: 'SELECT * FROM root r WHERE NOT is_defined(r.data.refresh_token)',
+      parameters: [{
+        name: '@id',
+        value: itemId
+      }]
+    };
+
+    self.client.queryDocuments(self.collection._self, querySpec).toArray(function(err, results) {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, results);
+      }
+    });
+  },
+
   getItem: function(itemId, callback) {
     var self = this;
 

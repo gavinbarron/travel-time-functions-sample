@@ -7,8 +7,8 @@ module.exports = function (context, notification) {
 
     // Init DocumentDb client and repo
     var documentDbOptions = {
-        host: process.env.docDbHost || 'https://calendarbot.documents.azure.com:443', // 'https://localhost:8081',  Host for local DocDb emulator
-        masterKey: process.env.docDbKey || 'YRWO4JRhpXT3P2n4ARUWYnG4U5HbY9zBgr24zfONkSRrxDoHM0L0FAea4ANdMPOqCoBjopcAASuAFzMzYj5xPQ==', //  'C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==', Fixed key for local DocDb emulator
+        host: process.env.docDbHost, // 'https://localhost:8081',  Host for local DocDb emulator
+        masterKey: process.env.docDbKey, //  'C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==', Fixed key for local DocDb emulator
         database: process.env.docDbName || 'botdocdb',
         collection: process.env.docDbCollection ||'botdata'
     };

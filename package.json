@@ -13,8 +13,8 @@
   "dependencies": {
     "azure-storage": "^2.8.1",
     "documentdb": "^1.14.2",
-    "https": "^1.0.0",
-    "request": "^2.83.0"
+    "es6-promise": "^4.2.4",
+    "https": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^4.18.2",
