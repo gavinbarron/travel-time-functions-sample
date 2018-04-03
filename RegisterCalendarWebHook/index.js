@@ -33,6 +33,7 @@ module.exports = function (context, myQueueItem) {
 
             res.on('data', chunk => subscriptionData += chunk);
             res.on('end', () => {
+                context.log(`http status: ${res.statusCode}`);
                 if (res.statusCode === 201) context.done(JSON.parse(subscriptionData));
                 else {
                     const subscription = JSON.parse(subscriptionData);
@@ -52,6 +53,7 @@ module.exports = function (context, myQueueItem) {
                 }
             });
         });
+        context.log(postBody);
         req.write(postBody);
         req.end();
     } catch (e) {
