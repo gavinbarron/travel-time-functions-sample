@@ -22,7 +22,7 @@ module.exports = function (context, myQueueItem) {
         }
     }
     var graphHelper = new GraphHelper();
-    GraphHelper.postData(`/v1.0/me/events`, myQueueItem.accessToken, JSON.stringify(meeting), (error, data) => {
+    graphHelper.postData(`/v1.0/me/events`, myQueueItem.accessToken, JSON.stringify(meeting), (error, data) => {
         if (error) {
             context.done(error);
             return;
