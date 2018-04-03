@@ -15,6 +15,7 @@ module.exports = function (context, notification) {
 
     var docDbClient = new DocumentClient(documentDbOptions.host, {masterKey: documentDbOptions.masterKey});
     var userRepo = new UserRepository(docDbClient, documentDbOptions.database, documentDbOptions.collection);
+    var graphHelper = new GraphHelper();
     userRepo.init((err) => {
         if (err) {
             context.done(err);
@@ -37,7 +38,7 @@ module.exports = function (context, notification) {
             }
             // Get the access token (should use the refresh token to renew this....)
             // Get the Calendar event from Microsoft Graph
-            GraphHelper.getData(`/v1.0/${notification.resource}`, user.data.accessToken, (error, data) => {
+            graphHelper.getData(`/v1.0/${notification.resource}`, user.data.accessToken, (error, data) => {
                 if (error) {
                     context.log(error);
                     context.done(error);
