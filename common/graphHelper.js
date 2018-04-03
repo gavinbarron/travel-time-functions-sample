@@ -67,6 +67,7 @@ GraphHelper.prototype = {
 
       res.on('data', chunk => endpointData += chunk);
       res.on('end', () => {
+        context.log(endpointData);
         if (res.statusCode === 200) callback(null, JSON.parse(endpointData));
         else callback(JSON.parse(endpointData), null);
       });
