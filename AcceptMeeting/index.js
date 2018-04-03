@@ -9,8 +9,8 @@ module.exports = function (context, myQueueItem) {
     };
     const data = JSON.stringify(acceptData);
     context.log(`Accept call ${data}`);
-
-    GraphHelper.postData(`/v1.0/${myQueueItem.meeting}/accept`, myQueueItem.accessToken, data, (error, data) => {
+    var graphHelper = new GraphHelper();
+    graphHelper.postData(`/v1.0/${myQueueItem.meeting}/accept`, myQueueItem.accessToken, data, (error, data) => {
         if (error) {
             context.done(error);
             return;
@@ -18,4 +18,3 @@ module.exports = function (context, myQueueItem) {
         context.done(null, data);
     });
 };
-
