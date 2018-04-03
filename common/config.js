@@ -1,4 +1,4 @@
 const cfg = {
-    CLIENT_STATE: 'asdfadfe4-identifier'
+    CLIENT_STATE: 'c1i3nt5t4t3'
 }
 module.exports = cfg;
