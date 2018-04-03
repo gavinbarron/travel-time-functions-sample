@@ -1,4 +1,4 @@
-const DocumentClient = require('documentdb');
+const DocumentClient = require('documentdb').DocumentClient;
 const UserRepository = require('../common/models/userRepository');
 const GraphHelper = require('../common/graphHelper')
 
